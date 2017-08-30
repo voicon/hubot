@@ -1,0 +1,16 @@
+docs https://www.tutorialspoint.com/coffeescript/coffeescript_date.htm
+run http://coffeescript.org/
+bot guideline https://github.com/hubotio/hubot/blob/master/docs/scripting.md
+
+
+alert "Hello CoffeeScript!"
+#alert (new Date()).getMonth()
+getWeekNumber = ->
+  now = new Date();
+  d = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+  dayNum = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+  yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+  Math.ceil((((d - yearStart) / 86400000) + 1)/7)
+
+alert getWeekNumber()
